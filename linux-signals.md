@@ -73,14 +73,16 @@ The trap command can be used in shell scripts for following reasons
 - cleaning up files
 - Ignoring signals
 
-``
+```
 trap commands signals
 ```
 
 Example usage for trap command to cleanup before executing is as follows
+
 ```
 trap "rm -f ${BASH_SOURCE%/*}/tmp_data; exit" 2
 ```
+
 The above command removes the tmp_data file that gets created in the source directory of the script. The `exit` at the end is important for the process to terminate when it encounters signal 2, otherwise, the process deletes the file tmp_data and continues to execute from the point in the program where the SIGINT (2) was invoked.
 
 # Tips and Tricks:
